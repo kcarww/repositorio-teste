@@ -243,8 +243,18 @@ class TestSQLAlchemyClientRepository:
 
 
 class TestDatabase:
-    def test_database_config_default_values(self):
+    def test_database_config_default_values(self, monkeypatch):
         # Arrange & Act
+        for env_var in (
+            'DATABASE_HOST',
+            'DATABASE_PORT',
+            'DATABASE_NAME',
+            'DATABASE_USER',
+            'DATABASE_PASSWORD',
+            'TEST_DATABASE_NAME',
+        ):
+            monkeypatch.delenv(env_var, raising=False)
+
         from src.infrastructure.database import DatabaseConfig
         config = DatabaseConfig()
         
