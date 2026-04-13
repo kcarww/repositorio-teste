@@ -62,7 +62,7 @@ jobs:
 
     - name: Run tests with coverage
       env:
-        DATABASE_HOST: 127.0.0.1
+        DATABASE_HOST: localhost
         DATABASE_PORT: 3306
         DATABASE_NAME: clientes_db
         DATABASE_USER: root
